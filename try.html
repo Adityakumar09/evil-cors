@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Malicious Iframe PoC</title>
+    <script>
+        // Try to redirect the parent window (shouldn't be possible if sandboxed)
+        window.top.location = "https://evil.com";
+    </script>
+</head>
+<body>
+    <h1>You are now hacked!</h1>
+</body>
+</html>
